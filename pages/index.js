@@ -448,7 +448,12 @@ let Home = () => {
           paddingBottom: p / 2,
         }}
       >
-        <div style={{ paddingLeft: p / 2, paddingRight: p / 2 }}>
+        <div
+          style={{
+            paddingLeft: p / 2,
+            paddingRight: p / 2,
+          }}
+        >
           <div
             style={{
               position: 'relative',
@@ -538,6 +543,12 @@ let Home = () => {
                     keyTrigger(k)
                   }}
                   onMouseUp={() => {
+                    keyUpTrigger(k)
+                  }}
+                  onTouchStart={() => {
+                    keyTrigger(k)
+                  }}
+                  onTouchEnd={() => {
                     keyUpTrigger(k)
                   }}
                 >
@@ -646,6 +657,26 @@ let Home = () => {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+        <div style={{ paddingLeft: p / 2, paddingRight: p / 2 }}>
+          <div
+            style={{
+              position: 'relative',
+              display: 'flex',
+              lineHeight: px(2) + 'px',
+              textAlign: 'center',
+            }}
+          >
+            <div>
+              <a
+                href="https://github.com/constraint-systems/rgb"
+                target="_blank"
+                style={{ color: 'inherit' }}
+              >
+                view source
+              </a>
             </div>
           </div>
         </div>
