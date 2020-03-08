@@ -419,9 +419,13 @@ let Home = () => {
   return (
     <div>
       <Head>
-        <meta charset="UTF-8" />
+        <meta charSet="UTF-8" />
         <title>Rgb</title>
         <link rel="shortcut icon" href="/favicon.png" />
+        <meta
+          name="viewport"
+          content={`width=${px(dimensions[0])}, initial-scale=1`}
+        />
         <meta name="theme-color" content="#000000" />
         <title>{title}</title>
         <meta name="description" content={description} />
