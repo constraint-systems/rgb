@@ -214,7 +214,6 @@ let Home = () => {
   }, [])
 
   function keyTrigger(keystring) {
-    console.log(keystring)
     km_ref.current[keystring] = true
     keyAction(keystring, { repeat: false })
   }
@@ -423,10 +422,6 @@ let Home = () => {
         <meta charset="UTF-8" />
         <title>Rgb</title>
         <link rel="shortcut icon" href="/favicon.png" />
-        <meta
-          name="viewport"
-          content="width=device-width,initial-scale=1,shrink-to-fit=no"
-        />
         <meta name="theme-color" content="#000000" />
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -470,6 +465,12 @@ let Home = () => {
               onMouseUp={() => {
                 keyUpTrigger('g')
               }}
+              onTouchStart={() => {
+                keyTrigger('g')
+              }}
+              onTouchEnd={() => {
+                keyUpTrigger('g')
+              }}
             >
               g
             </div>
@@ -483,6 +484,12 @@ let Home = () => {
                 keyTrigger('p')
               }}
               onMouseUp={() => {
+                keyUpTrigger('p')
+              }}
+              onTouchStart={() => {
+                keyTrigger('p')
+              }}
+              onTouchEnd={() => {
                 keyUpTrigger('p')
               }}
             >
@@ -583,7 +590,7 @@ let Home = () => {
                   height: '100%',
                   lineHeight: px(2 * 2) + 'px',
                   color: 'black',
-                  webkitTextStroke: '2px black',
+                  WebkitTextStroke: '2px black',
                   textAlign: 'center',
                 }}
               >
@@ -603,10 +610,16 @@ let Home = () => {
                   userSelect: 'none',
                 }}
                 onMouseDown={() => {
-                  keyTrigger('Space')
+                  keyTrigger(' ')
                 }}
                 onMouseUp={() => {
-                  keyUpTrigger('Space')
+                  keyUpTrigger(' ')
+                }}
+                onTouchStart={() => {
+                  keyTrigger(' ')
+                }}
+                onTouchEnd={() => {
+                  keyUpTrigger(' ')
                 }}
               >
                 Space
@@ -640,6 +653,12 @@ let Home = () => {
                     onMouseUp={() => {
                       keyUpTrigger(l)
                     }}
+                    onTouchStart={() => {
+                      keyTrigger(l)
+                    }}
+                    onTouchEnd={() => {
+                      keyUpTrigger(l)
+                    }}
                   >
                     {l}
                   </div>
@@ -650,6 +669,12 @@ let Home = () => {
                       keyTrigger(nrow2keys[i])
                     }}
                     onMouseUp={() => {
+                      keyUpTrigger(nrow2keys[i])
+                    }}
+                    onTouchStart={() => {
+                      keyTrigger(nrow2keys[i])
+                    }}
+                    onTouchEnd={() => {
                       keyUpTrigger(nrow2keys[i])
                     }}
                   >
