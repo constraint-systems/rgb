@@ -424,7 +424,7 @@ let Home = () => {
         <link rel="shortcut icon" href="/favicon.png" />
         <meta
           name="viewport"
-          content={`width=${px(dimensions[0])}, initial-scale=1`}
+          content={`width=${px(dimensions[0] + 1)}, initial-scale=1`}
         />
         <meta name="theme-color" content="#000000" />
         <title>{title}</title>
