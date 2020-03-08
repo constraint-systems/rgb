@@ -465,11 +465,13 @@ let Home = () => {
               onMouseUp={() => {
                 keyUpTrigger('g')
               }}
-              onTouchStart={() => {
+              onTouchStart={e => {
                 keyTrigger('g')
+                e.preventDefault()
               }}
-              onTouchEnd={() => {
+              onTouchEnd={e => {
                 keyUpTrigger('g')
+                e.preventDefault()
               }}
             >
               g
@@ -486,11 +488,13 @@ let Home = () => {
               onMouseUp={() => {
                 keyUpTrigger('p')
               }}
-              onTouchStart={() => {
+              onTouchStart={e => {
                 keyTrigger('p')
+                e.preventDefault()
               }}
-              onTouchEnd={() => {
+              onTouchEnd={e => {
                 keyUpTrigger('p')
+                e.preventDefault()
               }}
             >
               p
@@ -552,11 +556,13 @@ let Home = () => {
                   onMouseUp={() => {
                     keyUpTrigger(k)
                   }}
-                  onTouchStart={() => {
+                  onTouchStart={e => {
                     keyTrigger(k)
+                    e.preventDefault()
                   }}
-                  onTouchEnd={() => {
+                  onTouchEnd={e => {
                     keyUpTrigger(k)
+                    e.preventDefault()
                   }}
                 >
                   {k}
@@ -615,11 +621,13 @@ let Home = () => {
                 onMouseUp={() => {
                   keyUpTrigger(' ')
                 }}
-                onTouchStart={() => {
+                onTouchStart={e => {
                   keyTrigger(' ')
+                  e.preventDefault()
                 }}
-                onTouchEnd={() => {
+                onTouchEnd={e => {
                   keyUpTrigger(' ')
+                  e.preventDefault()
                 }}
               >
                 Space
@@ -653,11 +661,13 @@ let Home = () => {
                     onMouseUp={() => {
                       keyUpTrigger(l)
                     }}
-                    onTouchStart={() => {
+                    onTouchStart={e => {
                       keyTrigger(l)
+                      e.preventDefault()
                     }}
-                    onTouchEnd={() => {
+                    onTouchEnd={e => {
                       keyUpTrigger(l)
+                      e.preventDefault()
                     }}
                   >
                     {l}
@@ -671,11 +681,13 @@ let Home = () => {
                     onMouseUp={() => {
                       keyUpTrigger(nrow2keys[i])
                     }}
-                    onTouchStart={() => {
+                    onTouchStart={e => {
                       keyTrigger(nrow2keys[i])
+                      e.preventDefault()
                     }}
-                    onTouchEnd={() => {
+                    onTouchEnd={e => {
                       keyUpTrigger(nrow2keys[i])
+                      e.preventDefault()
                     }}
                   >
                     {l}
