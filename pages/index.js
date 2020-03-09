@@ -53,7 +53,8 @@ let Home = () => {
 
   let km_ref = useRef({})
   let color_ref = useRef([0, 0, 0])
-  let spaceref = useRef(true)
+  let lockref = useRef(false)
+  let spaceref = useRef(false)
 
   let cref = useRef(null)
   let gref = useRef(null)
@@ -63,7 +64,7 @@ let Home = () => {
   let piref = useRef(null)
   let pmref = useRef(null)
   let ptextref = useRef(null)
-  let toggle_ref = useRef(spaceref.current)
+  let toggle_ref = useRef(lockref.current)
 
   let nref = useRef(null)
 
@@ -123,7 +124,10 @@ let Home = () => {
     let pmx = cx(pm)
     pmx.fillStyle = rgb(color)
     pmx.fillStyle = pmx.fillRect(0, 0, pm.width, pm.height)
-    if (spaceref.current) {
+    if (
+      (lockref.current && !spaceref.current) ||
+      (!lockref.current && spaceref.current)
+    ) {
       pmx.lineWidth = 2
       pmx.strokeStyle = 'black'
       pmx.strokeRect(0, 0, pm.width - 0, pm.height - 0)
@@ -131,7 +135,7 @@ let Home = () => {
       pmx.strokeRect(2, 2, pm.width - 4, pm.height - 4)
     }
 
-    toggle_ref.current.childNodes[2].innerHTML = spaceref.current ? 'on' : 'off'
+    toggle_ref.current.childNodes[4].innerHTML = lockref.current ? 'off' : 'on'
 
     let pi = piref.current
     let pix = cx(pi)
@@ -202,7 +206,7 @@ let Home = () => {
 
     let pm = pmref.current
     pm.width = px(4 * 3 + 2)
-    pm.height = px(2 * 2)
+    pm.height = px(1 * 2)
     drawPMark()
 
     let n = nref.current
@@ -361,13 +365,21 @@ let Home = () => {
     let color = [r, g, b]
     color_ref.current = color
 
-    if ((key === ' ' || key === 'Backspace') && !e.repeat) {
-      spaceref.current = !spaceref.current
+    spaceref.current = false
+    if (km[' ']) {
+      spaceref.current = true
+    }
+
+    if (key === 't' && !e.repeat) {
+      lockref.current = !lockref.current
     }
 
     drawMarker()
 
-    if (spaceref.current) {
+    if (
+      (lockref.current && !spaceref.current) ||
+      (!lockref.current && spaceref.current)
+    ) {
       let c = cref.current
       let ctx = cx(c)
 
@@ -578,14 +590,11 @@ let Home = () => {
             <div
               ref={toggle_ref}
               style={{
-                width: px(14),
                 display: 'flex',
                 lineHeight: px(2) + 'px',
               }}
             >
-              <div>Draw toggle:</div>
-              <Space />
-              <div></div>
+              Paint
             </div>
             <div
               style={{ position: 'relative', lineHeight: 0, marginRight: p }}
@@ -598,7 +607,7 @@ let Home = () => {
                   top: 0,
                   width: '100%',
                   height: '100%',
-                  lineHeight: px(2 * 2) + 'px',
+                  lineHeight: px(2) + 'px',
                   color: 'black',
                   WebkitTextStroke: '2px black',
                   textAlign: 'center',
@@ -613,7 +622,7 @@ let Home = () => {
                   top: 0,
                   width: '100%',
                   height: '100%',
-                  lineHeight: px(2 * 2) + 'px',
+                  lineHeight: px(2) + 'px',
                   color: 'white',
                   textAlign: 'center',
                   cursor: 'default',
@@ -637,7 +646,45 @@ let Home = () => {
                 Space
               </div>
             </div>
+            <div
+              ref={toggle_ref}
+              style={{
+                width: px(14),
+                display: 'flex',
+                lineHeight: px(2) + 'px',
+              }}
+            >
+              <div
+                style={{
+                  width: px(2),
+                  background: '#bbb',
+                  cursor: 'default',
+                  textAlign: 'center',
+                }}
+                onMouseDown={() => {
+                  keyTrigger('t')
+                }}
+                onMouseUp={() => {
+                  keyUpTrigger('t')
+                }}
+                onTouchStart={e => {
+                  keyTrigger('t')
+                  e.preventDefault()
+                }}
+                onTouchEnd={e => {
+                  keyUpTrigger('t')
+                  e.preventDefault()
+                }}
+              >
+                t
+              </div>
+              <Space />
+              <div>turn paint lock</div>
+              <Space />
+              <div></div>
+            </div>
           </div>
+
           <div>
             <div style={{ lineHeight: px(2) + 'px' }}>Navigation</div>
             <div style={{ position: 'relative', lineHeight: 0 }}>
