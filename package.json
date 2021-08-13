@@ -9,7 +9,7 @@
     "deploy": "next build && next export && touch out/.nojekyll && touch out/CNAME && echo \"rgb.constraint.systems\" >> out/CNAME && git add out/ && git commit -m \"Deploy to gh-pages\" && git subtree push --prefix out origin gh-pages"
   },
   "dependencies": {
-    "next": "9.2.2",
+    "next": "11.1.0",
     "react": "16.13.0",
     "react-dom": "16.13.0"
   }
